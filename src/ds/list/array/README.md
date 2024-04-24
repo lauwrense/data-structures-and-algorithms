@@ -75,15 +75,6 @@ This is what it looks like.
 > [!Tip]
 > This operation is usually alias to `arr[i]`
 
-## Implementations
-
-Zig
-
-```rust
-{{#include array.zig}}
-```
-
-
 ## Variants
 
 
