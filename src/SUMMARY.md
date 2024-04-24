@@ -1,4 +1,4 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+- [Data Types](./DATATYPES.md)
 - [Array](./ds/list/array/README.md)
