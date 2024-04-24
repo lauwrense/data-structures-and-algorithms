@@ -26,14 +26,40 @@ of each of the elements of the array.
 > Since we have information on `T` on compile time, `T` dictates the amount of
 > memory space each elements take.
 
-Assuming that `T` is of type `void`
+### Using a General Purpose Pointer
+
+Assuming that `T` is of type `void`; if we want to store another data type `W`,
+we get the size of `W` in **bytes**, times the index of the element we want to
+access; then add it to `ptr`.
+
+```c
+ptr + index * size_of(W)
+```
+
+This is what it looks like.
+
+![Array Representation Doing Pointer Arithmetic]
+
+> [!Note]
+> This is ***ASSUMING `T` is VOID***.
+
+### Using a Typed Pointer
 
 
 ## Operations
 
 1. Element Access
 
-    Given an index `i`, access the element in `i`. Throws an error if `i > len`
+    Given an index `i`, and `arr` is an array; access the element in `i` by
+    returning `*T`. Throws an error if `i > len`.
+
+    ```rust
+    access(arr: Array, i: unsigned interger) -> Error!*T
+        if i >= arr.len then
+            return Error
+
+        return (arr.ptr + i).*
+    ```
 
     |       | Worst | Average | Best
     | ---   |  ---  |   ---   | ---
@@ -43,10 +69,11 @@ Assuming that `T` is of type `void`
 > [!Note]
 > The start index is dependent on the language specification. It may usually start
 > at either `0` or `1`. Thus, will determine whether to throw an error at `i >= len`
-> (`0`-index) or `i > len` (`1`-index).
+> (`0`-based indexing) or `i > len` (`1`-based indexing). In the case of the
+> pseudocode above, it uses `0`-based indexing.
 
 > [!Tip]
-> This operation is usually alias to `arr[i]`, where `arr` is an array
+> This operation is usually alias to `arr[i]`
 
 ## Implementations
 
