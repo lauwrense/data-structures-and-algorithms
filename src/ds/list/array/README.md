@@ -7,13 +7,22 @@ A data structure that is a contigous block of memory.
 
 ## Representation
 
+Since an array is a fixed memory region, we can represent it using a pointers.
+
+> [!Note]
+> Programming languages may allow for this representation, in most cases
+> they will do optimizations causing the array to not be a pointer in the application/
+> executable themselves, but rather an allocated memory region.
+
+### Using Pointers
+
 ![Array Representation](../../../assets/ArrayRepresentation.png)
 
 An array has fields `ptr`, which points to a location in memory specifically the
 *first element*; and `len`, which dictates the capacity of the array. 
 
 ```c
-struct array<T> {
+struct Array<T> {
     const ptr: *T,
     const len: unsigned interger,
 }
@@ -26,8 +35,6 @@ of each of the elements of the array.
 > Since we have information on `T` on compile time, `T` dictates the amount of
 > memory space each elements take.
 
-### Using a General Purpose Pointer
-
 Assuming that `T` is of type `void`; if we want to store another data type `W`,
 we get the size of `W` in **bytes**, times the index of the element we want to
 access; then add it to `ptr`.
@@ -38,13 +45,10 @@ ptr + index * size_of(W)
 
 This is what it looks like.
 
-![Array Representation Doing Pointer Arithmetic]
+![Array Representation Doing Pointer Arithmetic](../../../assets/ArrayPtrArith.png)
 
 > [!Note]
 > This is ***ASSUMING `T` is VOID***.
-
-### Using a Typed Pointer
-
 
 ## Operations
 

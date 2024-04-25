@@ -50,3 +50,5 @@ Composite data types are composed of other data types, which may either be a pri
 data type or another composite data type.
 
 ![Composite Data Type](./assets/DatatypeCompositePure.png)
+
+Some examples of composite data types.
